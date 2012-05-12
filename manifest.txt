@@ -1,0 +1,1 @@
+Main-Class: org.bandarra.jmapper.desktop.JMapper
