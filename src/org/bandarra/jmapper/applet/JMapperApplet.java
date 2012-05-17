@@ -43,8 +43,9 @@ public class JMapperApplet extends Applet implements ClipboardOwner {
     private class MouseMotionEvent implements MouseMotionListener{
         public void mouseMoved(MouseEvent evt){
             if (td != null){
+//                System.out.println(jMapperPanel.getNomeAreaAt(evt.getPoint());
                 int i = td.getIdxArea(jMapperPanel.getNomeAreaAt(evt.getPoint()));
-                if (i > 0){
+                if (i >= 0){
                     jLabelRodape.setText(td.getNomesAreas()[i]+ " - "+td.getValorArea(i,tabDataColorChooser.getIdxColunaMapa()));
                 } else {
                     jLabelRodape.setText("");
