@@ -1,9 +1,8 @@
 package org.bandarra.jmapper;
 
 import org.bandarra.map.*;
-import org.bandarra.tabulacao.*;
 import java.awt.Graphics;
-import java.awt.Color;
+import java.awt.Point;
 import java.awt.Rectangle;
 
 public interface MapDrawer {
@@ -19,5 +18,7 @@ public interface MapDrawer {
     public void zoom(Rectangle rect);
     public void pan(int xDistancia, int yDistancia);   
     public void reset();
+    public Point mapToPanel(Coordenada mapCoord);
+    public Coordenada panelToMap(Point panelPoint);    
     public boolean stateChanged();
 }

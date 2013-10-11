@@ -1,3 +1,12 @@
+/*
+ * RangesDrawer.java
+ *
+ * Created on 7 de Março de 2006, 17:26
+ *
+ * To change this template, choose Tools | Template Manager
+ * and open the template in the editor.
+ */
+
 package org.bandarra.jmapper;
 import java.awt.*;
 import java.text.DecimalFormat;

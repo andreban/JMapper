@@ -3,14 +3,13 @@
  *
  * Created on 20 de Fevereiro de 2006, 15:51
  *
- * To change this template, choose Tools | Template Manager
- * and open the template in the editor.
  */
 
 package org.bandarra.jmapper;
 import java.awt.*;
 import java.util.Iterator;
 import static java.lang.Math.*;
+import java.util.ArrayList;
 import org.bandarra.map.*;
 /**
  *
@@ -29,9 +28,11 @@ public class SimpleMapDrawer implements MapDrawer {
     private int borderSize = 10;
     private Data mapData;
     private float mapRatio = 0.0f;
-    private Stroke stroke = new BasicStroke(1.5f);    
+    private Stroke stroke = new BasicStroke(1.5f);   
+    private java.util.List<MapLayer> layers = new ArrayList<MapLayer>();
 
     public void addMapLayer(MapLayer aMapLayer) {
+        layers.add(aMapLayer);
     }
 
     public boolean stateChanged() {
@@ -83,8 +84,7 @@ public class SimpleMapDrawer implements MapDrawer {
         stateChanged = true;                
     }
 
-    public Coordenada panelToMap(Point panelPoint)
-    {
+    public Coordenada panelToMap(Point panelPoint) {
         MapCoordenada c = new MapCoordenada();
         int difCentroX = 0;
         int difCentroY = 0;       
@@ -100,8 +100,7 @@ public class SimpleMapDrawer implements MapDrawer {
         return c;                             
     }    
     
-    public Point mapToPanel(Coordenada mapCoord){
-
+    public Point mapToPanel(Coordenada mapCoord) {
         Point p = new Point();
         int difCentroX = 0;
         int difCentroY = 0;
@@ -174,10 +173,14 @@ public class SimpleMapDrawer implements MapDrawer {
                     }                    
                 }
             }  
-        }     
+        }    
+        for (MapLayer layer: layers) {
+            layer.drawLayer(this, g);
+        }
     }
 
     public void removeMapLayer(MapLayer aMapLayer) {
+        layers.remove(aMapLayer);
     }
 
     public void setColorChooser(AreaColorChooser colorChooser) {
@@ -208,11 +211,5 @@ public class SimpleMapDrawer implements MapDrawer {
 
     public int getHeight() {
         return this.height;
-    }
-
-
-
-    
-
-    
+    }       
 }

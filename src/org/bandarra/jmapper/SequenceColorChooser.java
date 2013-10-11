@@ -17,7 +17,7 @@ import java.util.*;
 public class SequenceColorChooser implements AreaColorChooser{ 
     private TreeMap<String,Color> treeMapCores = new TreeMap<String,Color>();
     private TreeMap<Integer,String> treeMapStrings = new TreeMap<Integer,String>();
-    private int lastColor = 1;
+    private int lastColor = 0;
     public Color getColor(String nomeArea){  
         Color cor = treeMapCores.get(nomeArea);
         if (cor != null){
