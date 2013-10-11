@@ -30,6 +30,8 @@ public class SimpleMapDrawer implements MapDrawer {
     private float mapRatio = 0.0f;
     private Stroke stroke = new BasicStroke(1.5f);   
     private java.util.List<MapLayer> layers = new ArrayList<MapLayer>();
+    private Color backGroundColor = Color.WHITE;
+    private Color foreGroundCOlor = Color.BLACK;
 
     public void addMapLayer(MapLayer aMapLayer) {
         layers.add(aMapLayer);
@@ -129,9 +131,9 @@ public class SimpleMapDrawer implements MapDrawer {
     public void drawMap(Graphics g) {
 //        g.setColor(cm.getColor(""));
   //      g.drawLine(0,0,width,height);
-        g.setColor(Color.WHITE);
+        g.setColor(backGroundColor);
         g.fillRect(0,0,width,height);
-        g.setColor(Color.BLACK);
+        g.setColor(foreGroundCOlor);
         if (mapData != null)
         {  
             /*Graphics2D color2d = null;
@@ -162,10 +164,10 @@ public class SimpleMapDrawer implements MapDrawer {
 
                     if (ci.equals(c0)){
                         g2d.setStroke(stroke);
-                        g2d.setColor(Color.BLACK);                    
-                        g2d.drawPolygon(poly);                                                     
+                        g2d.setColor(foreGroundCOlor);
+                        g2d.drawPolygon(poly);
                         g2d.setColor(areaColor);                    
-                        g2d.fillPolygon(poly); 
+                        g2d.fillPolygon(poly);
                         poly = new Polygon();
                         if (areaIterator.hasNext()){
                             ci = (Coordenada) areaIterator.next(); 
@@ -198,6 +200,22 @@ public class SimpleMapDrawer implements MapDrawer {
         mapInfo.verticalMapSize = aMapData.getVerticalMapSize();
         stateChanged = true;            
    
+    }
+
+    public Color getBackGroundColor() {
+        return backGroundColor;
+    }
+
+    public void setBackGroundColor(Color backGroundColor) {
+        this.backGroundColor = backGroundColor;
+    }
+
+    public Color getForeGroundCOlor() {
+        return foreGroundCOlor;
+    }
+
+    public void setForeGroundCOlor(Color foreGroundCOlor) {
+        this.foreGroundCOlor = foreGroundCOlor;
     }
 
     public void setSize(int width, int height) {
