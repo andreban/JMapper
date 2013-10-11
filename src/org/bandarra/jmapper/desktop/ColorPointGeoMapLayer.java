@@ -37,7 +37,7 @@ public class ColorPointGeoMapLayer implements MapLayer {
             g.setColor(c);
             for (Coordenada co: coordinateMap.get(c)) {
                 Point p = drawer.mapToPanel(co);
-                g.drawOval(p.x, p.y, 1, 1);
+                g.fillOval(p.x, p.y, 7, 7);
             }
         }
     }
